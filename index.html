@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saranie & Lorvens Wedding</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Georgia", serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        padding: 60px 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "💐";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        font-size: 80px;
+        opacity: 0.3;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .header::after {
+        content: "💕";
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        font-size: 80px;
+        opacity: 0.3;
+        animation: float 6s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .header h1 {
+        font-size: 3em;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .header .date {
+        font-size: 1.4em;
+        opacity: 0.9;
+        margin-bottom: 10px;
+      }
+
+      .header .welcome {
+        font-size: 1.1em;
+        opacity: 0.8;
+      }
+
+      .main-content {
+        padding: 60px 30px;
+      }
+
+      .page-selector {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .intro-text {
+        text-align: center;
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
+
+      .option-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .option-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 3px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .option-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: #ff6b6b;
+      }
+
+      .option-card.menu-card {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      }
+
+      .option-card.guestbook-card {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      }
+
+      .option-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .option-title {
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .option-description {
+        font-size: 1.1em;
+        color: #666;
+        line-height: 1.5;
+        margin-bottom: 25px;
+      }
+
+      .option-button {
+        background: linear-gradient(45deg, #4ecdc4, #44a08d);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+      }
+
+      .option-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+      }
+
+      .menu-card .option-button {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+      }
+
+      .menu-card .option-button:hover {
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+      }
+
+      /* Hidden sections */
+      .hidden {
+        display: none;
+      }
+
+      /* Menu Styles */
+      .menu-section {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .menu-title {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .menu-subtitle {
+        font-size: 1.2em;
+        color: #666;
+      }
+
+      .menu-category {
+        margin-bottom: 35px;
+      }
+
+      .category-title {
+        font-size: 1.8em;
+        color: #ff6b6b;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #feca57;
+        text-align: center;
+      }
+
+      .menu-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+      }
+
+      .menu-item {
+        background: #f8f9fa;
+        padding: 15px 20px;
+        border-radius: 10px;
+        border-left: 4px solid #4ecdc4;
+        transition: all 0.3s ease;
+      }
+
+      .menu-item:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
+
+      .item-name {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .item-description {
+        font-style: italic;
+        color: #666;
+        font-size: 0.9em;
+      }
+
+      .back-button {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 1em;
+        cursor: pointer;
+        margin: 30px auto;
+        display: block;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2.2em;
+        }
+
+        .option-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .main-content {
+          padding: 40px 20px;
+        }
+
+        .menu-section {
+          padding: 30px 20px;
+        }
+
+        .menu-items {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>💕 Saranie & Lorvens 💕</h1>
+        <p class="date">July 11th, 2025</p>
+        <p class="welcome">Welcome to our special day!</p>
+      </div>
+
+      <div class="main-content">
+        <!-- Main Selection Page -->
+        <div id="mainPage" class="page-selector">
+          <div class="intro-text">
+            <h2>Thank you for celebrating with us!</h2>
+            <p>Choose what you'd like to explore:</p>
+          </div>
+
+          <div class="option-cards">
+            <div class="option-card menu-card" onclick="showMenu()">
+              <span class="option-icon">🍽️</span>
+              <h3 class="option-title">Wedding Menu</h3>
+              <p class="option-description">
+                Discover the delicious dishes we've prepared for our special
+                celebration
+              </p>
+              <button class="option-button">View Menu</button>
+            </div>
+
+            <div class="option-card guestbook-card" onclick="showGuestBook()">
+              <span class="option-icon">📝</span>
+              <h3 class="option-title">Guest Book</h3>
+              <p class="option-description">
+                Leave us a heartfelt message to treasure forever
+              </p>
+              <button class="option-button">Sign Guest Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Page -->
+        <div id="menuPage" class="hidden">
+          <div class="menu-section">
+            <div class="menu-header">
+              <h2 class="menu-title">🍽️ Wedding Menu</h2>
+              <p class="menu-subtitle">Saranie & Lorvens's Special Day</p>
+            </div>
+
+            <div class="menu-category">
+              <h3 class="category-title">Apéritif</h3>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div class="item-name">Appetizers</div>
+                  <div class="item-description">
+                    A selection of delightful starters
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <h3 class="category-title">Main Courses</h3>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div class="item-name">Riz noir</div>
+                  <div class="item-description">Black mushroom rice</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Riz Jaune</div>
+                  <div class="item-description">Yellow rice</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Dinde</div>
+                  <div class="item-description">Turkey</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Poulet</div>
+                  <div class="item-description">Chicken</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Saumon</div>
+                  <div class="item-description">Salmon</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Gratiné de Macaroni</div>
+                  <div class="item-description">Macaroni gratin</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Gratiné de Pomme de terre</div>
+                  <div class="item-description">Potato gratin</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Lasagne</div>
+                  <div class="item-description">Lasagna</div>
+                </div>
+                <div class="menu-item">
+                  <div class="item-name">Salade Russe</div>
+                  <div class="item-description">Russian salad</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-category">
+              <h3 class="category-title">Dessert</h3>
+              <div class="menu-items">
+                <div class="menu-item">
+                  <div class="item-name">Gâteau de Vanille</div>
+                  <div class="item-description">Vanilla cake</div>
+                </div>
+              </div>
+            </div>
+
+            <button class="back-button" onclick="showMainPage()">
+              ← Back to Main
+            </button>
+          </div>
+        </div>
+
+        <!-- Guest Book Page -->
+        <div id="guestBookPage" class="hidden">
+          <!-- Your existing guest book will be inserted here -->
+          <div
+            class="connection-status"
+            id="connectionStatus"
+            style="display: none"
+          ></div>
+
+          <div style="text-align: center; margin-bottom: 40px">
+            <h2 style="font-size: 2.5em; color: #333; margin-bottom: 10px">
+              💕 Guest Book 💕
+            </h2>
+            <p style="font-size: 1.2em; color: #666">
+              Leave a special message for the happy couple!
+            </p>
+          </div>
+
+          <div
+            class="search-section"
+            style="margin-bottom: 40px; text-align: center"
+          >
+            <div
+              class="search-box"
+              style="
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                max-width: 500px;
+              "
+            >
+              <input
+                type="text"
+                class="search-input"
+                placeholder="🔍 Search for your name..."
+                id="searchInput"
+                style="
+                  width: 100%;
+                  padding: 15px 20px;
+                  font-size: 18px;
+                  border: 3px solid #e0e0e0;
+                  border-radius: 50px;
+                  outline: none;
+                  transition: all 0.3s ease;
+                  background: #fff;
+                "
+              />
+            </div>
+          </div>
+
+          <div
+            class="guest-grid"
+            id="guestGrid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+              gap: 25px;
+              margin-top: 30px;
+            "
+          >
+            <!-- Guest cards will be populated here -->
+          </div>
+
+          <button class="back-button" onclick="showMainPage()">
+            ← Back to Main
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // GOOGLE SHEETS CONFIGURATION
+      const GOOGLE_SHEETS_URL =
+        "https://script.google.com/macros/s/AKfycbwTWc4ywMxAqO3Lb8JMNrsea_m1rV6qmUoSdCQFGr2FGTyATnmUXuCxK82Aizt1nR-xpA/exec";
+
+      // Guest names from your list
+      const guestNames = [
+        "Saranie",
+        "Lorvens",
+        "Anisaire",
+        "Jeanine",
+        "Ricot",
+        "Yves",
+        "Islande",
+        "Esterlande",
+        "Katriahna",
+        "Lodsen",
+        "Alix",
+        "Rickny",
+        "Amari",
+        "Jean",
+        "Troy",
+        "Reynata",
+        "Edith",
+        "Cindy",
+        "Shela",
+        "Luckny",
+        "Marco",
+        "Adoïna",
+        "Carline",
+        "Belinka",
+        "Khniya",
+        "Bertrand",
+        "Sébastien",
+        "Jordany",
+        "Pyram",
+        "Jeffrey",
+        "Herby",
+        "Latini",
+        "Therdson",
+        "Rose",
+        "Christelle",
+        "Chelsea",
+        "Saraï",
+        "Ronyde",
+        "Indyana",
+        "Briana",
+        "Rolgardy",
+        "Messiah",
+        "Evens",
+        "Roselande",
+        "Louise",
+        "Palyouka",
+        "Marie",
+        "Christopher",
+        "Wancito",
+        "Reycinta",
+        "Jemima",
+        "Dubé",
+        "Emmanuel",
+        "Jackie",
+        "Nirva",
+        "Steven",
+        "Jane",
+        "Galvin",
+        "Kyndia",
+        "Kali",
+        "Angelaure",
+        "Régine",
+        "Daphney",
+      ];
+
+      // Store messages in memory
+      let guestMessages = {};
+
+      // Page navigation functions
+      function showMainPage() {
+        document.getElementById("mainPage").classList.remove("hidden");
+        document.getElementById("menuPage").classList.add("hidden");
+        document.getElementById("guestBookPage").classList.add("hidden");
+      }
+
+      function showMenu() {
+        document.getElementById("mainPage").classList.add("hidden");
+        document.getElementById("menuPage").classList.remove("hidden");
+        document.getElementById("guestBookPage").classList.add("hidden");
+      }
+
+      function showGuestBook() {
+        document.getElementById("mainPage").classList.add("hidden");
+        document.getElementById("menuPage").classList.add("hidden");
+        document.getElementById("guestBookPage").classList.remove("hidden");
+
+        // Initialize guest book when shown
+        if (document.getElementById("guestGrid").children.length === 0) {
+          initializeGuestBook();
+        }
+      }
+
+      // Guest book functions (from your existing code)
+      function showConnectionStatus(message, isError = false) {
+        const status = document.getElementById("connectionStatus");
+        status.textContent = message;
+        status.className = `connection-status ${
+          isError ? "error" : "connected"
+        }`;
+        status.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px 15px;
+                border-radius: 20px;
+                color: white;
+                font-size: 12px;
+                z-index: 1000;
+                display: block;
+                background: ${isError ? "#ff6b6b" : "#4ecdc4"};
+            `;
+
+        setTimeout(() => {
+          status.style.display = "none";
+        }, 3000);
+      }
+
+      function initializeGuestBook() {
+        const guestGrid = document.getElementById("guestGrid");
+        guestGrid.innerHTML = "";
+
+        guestNames.forEach((name) => {
+          const guestCard = createGuestCard(name);
+          guestGrid.appendChild(guestCard);
+        });
+      }
+
+      function createGuestCard(name) {
+        const card = document.createElement("div");
+        card.className = "guest-card";
+        card.setAttribute("data-name", name.toLowerCase());
+        card.style.cssText = `
+                background: white;
+                border-radius: 15px;
+                padding: 25px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                border: 2px solid transparent;
+                transition: all 0.3s ease;
+                position: relative;
+            `;
+
+        const hasMessage = guestMessages[name];
+        if (hasMessage) {
+          card.style.borderLeft = "5px solid #4ecdc4";
+        }
+
+        card.innerHTML = `
+                <div class="guest-name" style="font-size: 1.4em; font-weight: bold; color: #333; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 0.8em;">👤</span>${name}
+                </div>
+                <div class="message-area" style="margin-top: 15px;">
+                    ${
+                      hasMessage
+                        ? `<div class="saved-message" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 15px; margin-top: 10px; font-style: italic; color: #555; position: relative;">
+                            <span style="position: absolute; top: -5px; right: -5px; font-size: 20px;">💌</span>
+                            "${hasMessage}"
+                            <button onclick="editMessage('${name}')" style="background: #feca57; color: #333; border: none; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; margin-top: 8px; transition: all 0.3s ease;">Edit</button>
+                        </div>`
+                        : `<div style="color: #666; font-size: 0.9em; margin-bottom: 10px;">Share your wishes for the happy couple!</div>
+                        <textarea 
+                            placeholder="Write your heartfelt message here..." 
+                            id="message-${name}"
+                            style="width: 100%; min-height: 80px; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; resize: vertical; font-family: inherit; transition: border-color 0.3s ease;"
+                        ></textarea>
+                        <button onclick="saveMessage('${name}')" style="background: linear-gradient(45deg, #4ecdc4, #44a08d); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 14px; margin-top: 10px; transition: all 0.3s ease;">
+                            💌 Save Message
+                        </button>`
+                    }
+                </div>
+            `;
+
+        // Add hover effects
+        card.addEventListener("mouseenter", () => {
+          card.style.transform = "translateY(-5px)";
+          card.style.boxShadow = "0 10px 25px rgba(0, 0, 0, 0.15)";
+          card.style.borderColor = "#ff6b6b";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0)";
+          card.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.1)";
+          card.style.borderColor = hasMessage ? "#4ecdc4" : "transparent";
+        });
+
+        return card;
+      }
+
+      async function saveMessage(name) {
+        const messageInput = document.getElementById(`message-${name}`);
+        const message = messageInput.value.trim();
+
+        if (message) {
+          const saveBtn = messageInput.nextElementSibling;
+          const originalText = saveBtn.innerHTML;
+          saveBtn.innerHTML = "⏳ Saving...";
+          saveBtn.disabled = true;
+
+          try {
+            await saveToGoogleSheets(name, message);
+            guestMessages[name] = message;
+
+            const card = document.querySelector(
+              `[data-name="${name.toLowerCase()}"]`
+            );
+            card.innerHTML = `
+                        <div class="guest-name" style="font-size: 1.4em; font-weight: bold; color: #333; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 0.8em;">👤</span>${name}
+                        </div>
+                        <div class="message-area" style="margin-top: 15px;">
+                            <div class="saved-message" style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 15px; margin-top: 10px; font-style: italic; color: #555; position: relative;">
+                                <span style="position: absolute; top: -5px; right: -5px; font-size: 20px;">💌</span>
+                                "${message}"
+                                <button onclick="editMessage('${name}')" style="background: #feca57; color: #333; border: none; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; margin-top: 8px;">Edit</button>
+                                <div style="font-size: 12px; color: #4ecdc4; margin-top: 5px;">✅ Saved to database</div>
+                            </div>
+                        </div>
+                    `;
+            card.style.borderLeft = "5px solid #4ecdc4";
+
+            card.style.transform = "scale(1.05)";
+            setTimeout(() => {
+              card.style.transform = "scale(1)";
+            }, 300);
+
+            showConnectionStatus("Message saved successfully!");
+          } catch (error) {
+            console.error("Error saving to Google Sheets:", error);
+            guestMessages[name] = message;
+            showConnectionStatus("Saved locally (check connection)", true);
+          }
+        } else {
+          alert("Please write a message before saving!");
+        }
+      }
+
+      function editMessage(name) {
+        const card = document.querySelector(
+          `[data-name="${name.toLowerCase()}"]`
+        );
+        const currentMessage = guestMessages[name];
+
+        card.innerHTML = `
+                <div class="guest-name" style="font-size: 1.4em; font-weight: bold; color: #333; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 0.8em;">👤</span>${name}
+                </div>
+                <div class="message-area" style="margin-top: 15px;">
+                    <div style="color: #666; font-size: 0.9em; margin-bottom: 10px;">Edit your message:</div>
+                    <textarea 
+                        id="message-${name}"
+                        style="width: 100%; min-height: 80px; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; resize: vertical; font-family: inherit;"
+                    >${currentMessage}</textarea>
+                    <button onclick="saveMessage('${name}')" style="background: linear-gradient(45deg, #4ecdc4, #44a08d); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 14px; margin-top: 10px;">
+                        💌 Update Message
+                    </button>
+                </div>
+            `;
+
+        setTimeout(() => {
+          document.getElementById(`message-${name}`).focus();
+        }, 100);
+      }
+
+      async function saveToGoogleSheets(name, message) {
+        if (GOOGLE_SHEETS_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+          console.log("Google Sheets not configured yet");
+          return;
+        }
+
+        const params = new URLSearchParams({
+          timestamp: new Date().toISOString(),
+          name: name,
+          message: message,
+          action: "save",
+        });
+
+        try {
+          const response = await fetch(
+            `${GOOGLE_SHEETS_URL}?${params.toString()}`,
+            {
+              method: "GET",
+              mode: "no-cors",
+            }
+          );
+          return { status: "success" };
+        } catch (error) {
+          throw new Error("Network error: " + error.message);
+        }
+      }
+
+      // Search functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("searchInput")
+          .addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const guestCards = document.querySelectorAll(".guest-card");
+
+            guestCards.forEach((card) => {
+              const name = card.getAttribute("data-name");
+              if (name && name.includes(searchTerm)) {
+                card.style.display = "block";
+                if (searchTerm && name.startsWith(searchTerm)) {
+                  card.style.order = "-1";
+                }
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
