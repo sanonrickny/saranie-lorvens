@@ -124,6 +124,31 @@
 
         <!-- Guest Book Page -->
         <div id="guestBookPage" class="hidden">
+          <button
+            class="top-back-button"
+            onclick="showMainPage()"
+            style="
+              position: absolute;
+              top: 20px;
+              left: 20px;
+              background: rgba(255, 255, 255, 0.9);
+              border: 2px solid #ff6b6b;
+              color: #ff6b6b;
+              padding: 8px 15px;
+              border-radius: 20px;
+              font-size: 14px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              backdrop-filter: blur(10px);
+              font-weight: bold;
+              z-index: 100;
+            "
+            onmouseover="this.style.background='#ff6b6b'; this.style.color='white';"
+            onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.color='#ff6b6b';"
+          >
+            ← Back
+          </button>
+
           <div
             class="connection-status"
             id="connectionStatus"
