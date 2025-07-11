@@ -100,7 +100,7 @@ function createGuestCard(name) {
                 style="width: 100%; min-height: 80px; padding: 12px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; resize: vertical; font-family: inherit; transition: border-color 0.3s ease;"
             ></textarea>
             <button onclick="saveMessage('${name}')" style="background: linear-gradient(45deg, #4ecdc4, #44a08d); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 14px; margin-top: 10px; transition: all 0.3s ease;">
-                💌 Save Message
+                💌 Send Message
             </button>`
         }
     </div>
