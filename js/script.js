@@ -11,23 +11,34 @@ function showMainPage() {
   document.getElementById("menuPage").classList.add("hidden");
   document.getElementById("programPage").classList.add("hidden");
   document.getElementById("guestBookPage").classList.add("hidden");
+
+  // Scroll to top smoothly
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function showMenu() {
   document.getElementById("mainPage").classList.add("hidden");
   document.getElementById("menuPage").classList.remove("hidden");
+  document.getElementById("programPage").classList.add("hidden");
   document.getElementById("guestBookPage").classList.add("hidden");
+
+  // Scroll to top smoothly
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function showGuestBook() {
   document.getElementById("mainPage").classList.add("hidden");
   document.getElementById("menuPage").classList.add("hidden");
+  document.getElementById("programPage").classList.add("hidden");
   document.getElementById("guestBookPage").classList.remove("hidden");
 
   // Initialize guest book when shown
   if (document.getElementById("guestGrid").children.length === 0) {
     initializeGuestBook();
   }
+
+  // Scroll to top smoothly
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function showProgram() {
@@ -35,6 +46,9 @@ function showProgram() {
   document.getElementById("menuPage").classList.add("hidden");
   document.getElementById("programPage").classList.remove("hidden");
   document.getElementById("guestBookPage").classList.add("hidden");
+
+  // Scroll to top smoothly
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // Guest book functions
@@ -156,7 +170,7 @@ async function saveMessage(name) {
                 <span style="position: absolute; top: -5px; right: -5px; font-size: 20px;">💌</span>
                 "${message}"
                 <button onclick="editMessage('${name}')" style="background: #feca57; color: #333; border: none; padding: 5px 10px; border-radius: 15px; cursor: pointer; font-size: 12px; margin-top: 8px;">Edit</button>
-                <div style="font-size: 12px; color: #4ecdc4; margin-top: 5px;">✅ Saved to database</div>
+                <div style="font-size: 12px; color: #4ecdc4; margin-top: 5px;">✅ Message Sent</div>
             </div>
         </div>
       `;
