@@ -9,6 +9,7 @@ let guestMessages = {};
 function showMainPage() {
   document.getElementById("mainPage").classList.remove("hidden");
   document.getElementById("menuPage").classList.add("hidden");
+  document.getElementById("programPage").classList.add("hidden");
   document.getElementById("guestBookPage").classList.add("hidden");
 }
 
@@ -27,6 +28,13 @@ function showGuestBook() {
   if (document.getElementById("guestGrid").children.length === 0) {
     initializeGuestBook();
   }
+}
+
+function showProgram() {
+  document.getElementById("mainPage").classList.add("hidden");
+  document.getElementById("menuPage").classList.add("hidden");
+  document.getElementById("programPage").classList.remove("hidden");
+  document.getElementById("guestBookPage").classList.add("hidden");
 }
 
 // Guest book functions

@@ -129,6 +129,10 @@ body {
   background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
 
+.option-card.program-card {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+}
+
 .option-icon {
   font-size: 4em;
   margin-bottom: 20px;
@@ -267,6 +271,90 @@ body {
 .back-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Program Styles */
+.program-section {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.program-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.program-title {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.program-subtitle {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.program-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.program-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border-left: 5px solid #ff6b6b;
+  transition: all 0.3s ease;
+}
+
+.program-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.program-time {
+  font-size: 2em;
+  min-width: 50px;
+  text-align: center;
+}
+
+.program-content {
+  flex: 1;
+}
+
+.program-event {
+  font-size: 1.4em;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.program-description {
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.program-note {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 5px;
+  font-size: 0.95em;
+}
+
+.program-note strong {
+  color: #333;
+  font-style: normal;
 }
 
 @media (max-width: 768px) {
